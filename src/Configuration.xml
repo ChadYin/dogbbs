@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="User" type="com.db.model.User" />
+		<typeAlias alias="Section" type="com.db.model.Section" />
+		<typeAlias alias="Topic" type="com.db.model.Topic" />
+		<typeAlias alias="Reply" type="com.db.model.Reply" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/db/model/User.xml" />
+		<mapper resource="com/db/model/Section.xml" />
+		<mapper resource="com/db/model/Topic.xml" />
+		<mapper resource="com/db/model/Reply.xml" />
+	</mappers>
+
+</configuration>
