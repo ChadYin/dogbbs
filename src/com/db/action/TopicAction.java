@@ -33,6 +33,7 @@ public class TopicAction extends ActionSupport {
 	private TopicService topicService;
 
 	public String topiclist() throws Exception {
+		System.out.println(s_name);
 		start = (page - 1) * 10;
 		end = 10;
 		List<Topic> topiclist = topicService.topiclist(s_name);
