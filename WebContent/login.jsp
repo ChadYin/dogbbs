@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-<title>Login and Registration Form with HTML5 and CSS3</title>
+<title>登录</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
 	content="Login and Registration Form with HTML5 and CSS3" />
@@ -56,7 +56,7 @@
 						<h1>Log in</h1>
 						<p>
 							<label for="username" class="uname" data-icon="u"> Your email or username </label> 
-							<input type="textfield" name="user.u_email" id="text1" value="用户名或邮箱" onfocus="login()" />
+							<input type="text" name="user.u_email" id="text1" value="用户名或邮箱" onfocus="login()" />
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="p"> Your password </label> 
