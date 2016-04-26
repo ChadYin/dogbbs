@@ -56,11 +56,11 @@
 						<h1>Log in</h1>
 						<p>
 							<label for="username" class="uname" data-icon="u"> Your email or username </label> 
-							<input type="text" name="user.u_email" id="text1" value="用户名或邮箱" onfocus="login()" />
+							<input type="text" name="user.u_email" id="text1" required="required" value="用户名或邮箱" onfocus="login()" />
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="p"> Your password </label> 
-							<input name="user.u_password" type="password" id="password" />
+							<input name="user.u_password" type="password" required="required" id="password" />
 						</p>
 
 						<p class="login button">

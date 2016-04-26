@@ -57,23 +57,23 @@
 						<h1>Regist</h1>
 						<p>
 							<label for="username" class="uname" data-icon="u"> 用户名 </label> <input
-								type="text" id="u_name" name="user.u_name">
+								type="text" id="u_name" name="user.u_name" required="required" >
 						</p>
 						<p>
 							<label for="email" class="youpasswd" data-icon="e"> 邮箱 </label> <input
-								type="text" id="u_email" name="user.u_email">
+								type="text" id="u_email" name="user.u_email" required="required" >
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="p"> 密码
-							</label> <input type="text" id="u_password" name="user.u_password">
+							</label> <input type="text" id="u_password" name="user.u_password" required="required" >
 						</p>
 						<p>
 							<label for="realname" class="youpasswd" data-icon="u">
-								真实姓名 </label> <input type="text" id="u_realname" name="user.u_realname">
+								真实姓名 </label> <input type="text" id="u_realname" name="user.u_realname" required="required" >
 						</p>
 						<p>
 							<label for="number" class="youpasswd" data-icon="p"> 身份证号
-							</label> <input type="text" id="u_number" name="user.u_number">
+							</label> <input type="text" id="u_number" name="user.u_number" required="required" >
 						</p>
 						<p>
 							<label for="tips" class="youpasswd" data-icon="u"> 个性签名 </label>

@@ -82,7 +82,7 @@
 				<table>
 					<tr>
 						<td>版块名称</td>
-						<td><input type="text" name="section.s_name"></td>
+						<td><input type="text" name="section.s_name"  required="required"></td>
 					</tr>
 					<tr>
 						<td>版块介绍</td>

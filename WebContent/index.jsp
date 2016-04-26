@@ -156,7 +156,7 @@
 					<table>
 						<tr style="background: white;">
 							<td>输入帖子关键字</td>
-							<td><input type="text" name="searchtopic"></td>
+							<td><input type="text" name="searchtopic"  required="required"></td>
 						</tr>
 						<tr>
 							<td><input type="submit" value="点击查找帖子"></td>

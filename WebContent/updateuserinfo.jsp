@@ -38,12 +38,13 @@
 							<label for="password" class="youpasswd" data-icon="u">
 								真实姓名 </label> <input type="text"
 								value="${sessionScope.userinfo.u_realname }"
-								name="user.u_realname">
+								name="user.u_realname" required="required">
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="u">
 								身份证号 </label> <input type="text"
-								value="${sessionScope.userinfo.u_number }" name="user.u_number">
+								value="${sessionScope.userinfo.u_number }" name="user.u_number"
+								required="required">
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="e">

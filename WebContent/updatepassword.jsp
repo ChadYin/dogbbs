@@ -58,12 +58,12 @@
 						<p>
 							<label for="password" class="youpasswd" data-icon="p">
 								新密码 </label> <input type="password" id="password1"
-								name="user.u_password" id="newpassword1">
+								name="user.u_password" id="newpassword1"  required="required">
 							</td>
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="p">
-								新密码 </label> <input type="password" id="newpassword2">
+								新密码 </label> <input type="password" id="newpassword2"  required="required">
 						</p>
 
 						<p class="login button">
