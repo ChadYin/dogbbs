@@ -16,6 +16,9 @@
 <link rel="stylesheet" type="text/css" href="css/demo11.css" />
 <link rel="stylesheet" type="text/css" href="css/style11.css" />
 <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.scrollzer.min.js"></script>
+<script src="js/jquery.scrolly.min.js"></script>
 <script type="text/javascript">
 	function login() {
 		var obj = document.getElementById("text1");
@@ -23,6 +26,36 @@
 	}
 </script>
 <script type="text/javascript">
+	var isOk = false;
+	
+	function checkmail() {
+		
+		var email = document.getElementById("u_email").value;
+		var strReg = "";
+		var r;
+		strReg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		r = email.search(strReg);
+		if (r == -1) {
+			alert("邮箱格式错误!");
+		}else{
+			isOk=true;
+		}
+	}
+	
+	function checknumber(){
+		var number = document.getElementById("number").value();
+		var strReg = "";
+		var r;
+		strReg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+		r = number.search(strReg);
+		if (r == -1) {
+			alert("身份证号格式错误!");
+		}else{
+			isOk=true;
+		}
+	}
+	
+	
 	function check() {
 		var u_name = document.getElementById("u_name").value;
 		var u_email = document.getElementById("u_email").value;
@@ -31,7 +64,7 @@
 		var u_number = document.getElementById("u_number").value;
 		var u_tips = document.getElementById("u_tips").value;
 
-		if (u_name != "" && u_email != "" && u_password != "" && u_realname != "" && u_number != ""&& u_tips != "") {
+		if (isOk && u_name != "" && u_email != "" && u_password != "" && u_realname != "" && u_number != ""&& u_tips != "") {
 			return true;
 
 		} else {
@@ -40,6 +73,8 @@
 		}
 
 	}
+	
+
 </script>
 </head>
 <body>
@@ -61,7 +96,7 @@
 						</p>
 						<p>
 							<label for="email" class="youpasswd" data-icon="e"> 邮箱 </label> <input
-								type="text" id="u_email" name="user.u_email" required="required" >
+								type="text" id="u_email" name="user.u_email" required="required" onchange="checkmail()">
 						</p>
 						<p>
 							<label for="password" class="youpasswd" data-icon="p"> 密码
@@ -73,7 +108,7 @@
 						</p>
 						<p>
 							<label for="number" class="youpasswd" data-icon="p"> 身份证号
-							</label> <input type="text" id="u_number" name="user.u_number" required="required" >
+							</label> <input type="text" id="u_number" name="user.u_number" required="required" onchange="checknumber()">
 						</p>
 						<p>
 							<label for="tips" class="youpasswd" data-icon="u"> 个性签名 </label>

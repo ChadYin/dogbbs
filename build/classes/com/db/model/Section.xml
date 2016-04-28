@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.dao.SectionDao">
+	<select id="sectionlist" resultType="Section">
+		select * from info_section
+	</select>
+	<insert id="addsection" parameterType="Section"
+		useGeneratedKeys="true" keyProperty="s_id">
+		insert into
+		info_section(s_id,s_name,s_number,s_tips)
+		values(0,#{s_name},0,#{s_tips})
+	</insert>
+
+</mapper>

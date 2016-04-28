@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.dao.ReplyDao">
+	<select id="replylist" parameterType="Topic" resultType="Reply">
+		select *
+		from info_reply inner join info_user on info_reply. r_u_id =
+		info_user.u_id and info_reply.r_t_id = #{t_id}
+	</select>
+	<select id="replylists" parameterType="Topic" resultType="Reply">
+		select
+		*
+		from info_reply inner join info_user on info_reply. r_u_id =
+		info_user.u_id and info_reply.r_t_id = #{t_id} limit #{start},#{end}
+	</select>
+	<insert id="addreply" parameterType="Reply" useGeneratedKeys="true"
+		keyProperty="r_id">
+		insert into info_reply(r_id,r_content,r_u_id,r_t_id)
+		values (0,#{r_content},#{r_u_id},#{r_t_id})
+	</insert>
+	<delete id="deletereply" parameterType="Reply">
+		delete from info_reply
+		where r_id = #{r_id}
+	</delete>
+	<select id="userreply" parameterType="Reply" resultType="Reply">
+		select *
+		from info_reply where r_u_id = #{r_u_id} order by r_id desc
+	</select>
+</mapper>

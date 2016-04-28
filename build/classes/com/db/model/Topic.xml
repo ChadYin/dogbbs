@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.dao.TopicDao">
+	<select id="topiclist" resultType="Topic">
+		select * from
+		info_topic,info_user,info_section where info_topic.t_u_id =
+		info_user.u_id and info_topic.t_s_id = info_section.s_id and
+		info_section.s_name = #{s_name}
+	</select>
+	<select id="topiclists" resultType="Topic">
+		select * from
+		info_topic,info_user,info_section where info_topic.t_u_id =
+		info_user.u_id and info_topic.t_s_id = info_section.s_id and
+		info_section.s_name = #{s_name} limit #{start},#{end}
+	</select>
+	<insert id="addtopic" parameterType="Topic" useGeneratedKeys="true"
+		keyProperty="t_id">
+		insert into
+		info_topic(t_id,t_name,t_content,t_u_id,t_s_id)
+		values(0,#{t_name},#{t_content},#{t_u_id},#{t_s_id})
+	</insert>
+	<delete id="deletetopic" parameterType="Topic">
+		delete from info_topic
+		where t_id = #{t_id}
+	</delete>
+	<select id="usertopic" parameterType="Topic" resultType="Topic">
+		select *
+		from info_topic where t_u_id = #{t_u_id} order by t_id desc
+	</select>
+	<select id="searchtopic" resultType="Topic">
+		select * from
+		info_topic,info_user,info_section where info_topic.t_u_id =
+		info_user.u_id and info_topic.t_s_id = info_section.s_id and t_name
+		like CONCAT('%', #{searchtopic}, '%')
+	</select>
+
+
+</mapper>

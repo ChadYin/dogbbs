@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.dao.UserDao">
+
+	<select id="login" parameterType="User" resultType="User">
+		select * from
+		info_user where u_email=#{u_email} or u_name=#{u_email} and
+		u_password=#{u_password}
+	</select>
+	<insert id="regist" parameterType="User" useGeneratedKeys="true"
+		keyProperty="u_id">
+		insert into
+		info_user(u_id,u_name,u_email,u_password,u_state,u_identity,u_realname,u_number,u_tips)
+		values(0,#{u_name},#{u_email},#{u_password},0,0,#{u_realname},#{u_number},#{u_tips})
+	</insert>
+	<update id="updatepassword" parameterType="User">
+		update info_user set
+		u_password = #{u_password} where u_name = #{u_name}
+	</update>
+	<update id="updateuserinfo" parameterType="User">
+		update info_user set
+		u_realname =
+		#{u_realname},u_number=#{u_number},u_tips=#{u_tips} where
+		u_name =
+		#{u_name}
+	</update>
+	<select id="userlist" resultType="User">
+		select * from info_user
+	</select>
+	<update id="forbid" parameterType="User">
+		update info_user set u_state =
+		1 where u_id = #{u_id}
+	</update>
+	<select id="forbiduserlist" resultType="User">
+		select * from info_user
+		where u_state = 1
+	</select>
+	<update id="outforbid" parameterType="User">
+		update info_user set
+		u_state = 0 where u_id = #{u_id}
+	</update>
+	<select id="searchuser" resultType="User">
+		select * from info_user where u_name = #{searchuser}
+	</select>
+</mapper>
