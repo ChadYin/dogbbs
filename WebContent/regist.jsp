@@ -27,6 +27,60 @@
 </script>
 <script type="text/javascript">
 	var isOk = false;
+	var XMLHttp;
+	
+	function createXMLHttpRequest() {
+		try {
+			XMLHttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				XMLHttp = new ActiveXObject("Mcrisoft.XMLHTTP");
+			} catch (e) {
+				try {
+					XMLHttp = new XMLHttpRequest();
+					if (XMLHttp.overrideMimeType) {
+						XMLHttp.overrideMimeType("text/xml");
+					}
+
+				} catch (e) {
+
+				}
+			}
+		}
+	}
+	
+	
+	function uname(){
+		alert("s");
+		createXMLHttpRequest();
+		var name = document.getElementById("u_name").value;
+		if (XMLHttp != null) {
+			XMLHttp.open("post", "checkuname.action?u_name=" + name, true);
+			XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+			XMLHttp.onreadystatechange = processRequest;
+			XMLHttp.send(null);
+		} else {
+			alert("不能创建XMLHttpRequest对象查询");
+		}
+	}
+	
+	function processRequest() {
+
+		if (XMLHttp.readyState == 4) {
+			if (XMLHttp.status == 200) {
+
+				var sobj = document.getElementById("check");
+				var str = XMLHttp.responseText;
+				var a = document.getElementById("checkcc");
+				if (str == 1) {
+
+					sobj.setAttribute("style", "display:block");
+				} else {
+					sobj.setAttribute("style", "display:none");
+				}
+			}
+		}
+	}
 	
 	function checkmail() {
 		
@@ -73,9 +127,13 @@
 		}
 
 	}
-	
-	function checkuname(){
-		 if (trim(userfield.value).length != 0) {
+	</script>
+	<!-- 
+	<script type="text/javascript">
+	function uname() {
+		alert("1");
+		var uname = document.getElementById("u_name");
+		 if (uname.length != 0) {
 		var u_name = document.getElementById("u_name").value;
 		 var xmlHttpRequest = null;
 		 var url = "checkuname.action?u_name+"u_name;
@@ -107,8 +165,8 @@
      }		
 	}
 	
-
-</script>
+	</script>
+ -->	
 </head>
 <body>
 	<div class="container">
@@ -125,7 +183,8 @@
 						<h1>Regist</h1>
 						<p>
 							<label for="username" class="uname" data-icon="u"> 用户名 </label> <input
-								type="text" id="u_name" name="user.u_name" required="required" onblur="checkuname()"><td width="220px;"><span id="usermsg"></span></td>
+								type="text" id="u_name" name="user.u_name" required="required" onchange="uname()"><span
+					id="check" style="display: none;">用户名已存在</span>
 						</p>
 						<p>
 							<label for="email" class="youpasswd" data-icon="e"> 邮箱 </label> <input
