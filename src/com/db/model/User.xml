@@ -5,7 +5,7 @@
 
 	<select id="login" parameterType="User" resultType="User">
 		select * from
-		info_user where u_email=#{u_email} or u_name=#{u_email} and
+		info_user where u_email=#{u_email} or u_name=#{u_name} and
 		u_password=#{u_password}
 	</select>
 	<insert id="regist" parameterType="User" useGeneratedKeys="true"
@@ -14,6 +14,10 @@
 		info_user(u_id,u_name,u_email,u_password,u_state,u_identity,u_realname,u_number,u_tips)
 		values(0,#{u_name},#{u_email},#{u_password},0,0,#{u_realname},#{u_number},#{u_tips})
 	</insert>
+	<select id="checkuname"  resultType="User">
+		select * from
+		info_user where  u_name=#{u_name} 
+	</select>
 	<update id="updatepassword" parameterType="User">
 		update info_user set
 		u_password = #{u_password} where u_name = #{u_name}

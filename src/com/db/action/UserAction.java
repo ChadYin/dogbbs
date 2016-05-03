@@ -1,7 +1,11 @@
 package com.db.action;
 
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -19,6 +23,7 @@ public class UserAction extends ActionSupport {
 
 	private User user;
 	private String searchuser;
+	private String u_name;
 	
 	
 	@Autowired
@@ -42,7 +47,21 @@ public class UserAction extends ActionSupport {
 			return INPUT;
 		}
 	}
-
+	
+	public String checkuname() throws Exception{
+		User user = userService.checkname(u_name);
+		if(user!=null){
+			HttpServletResponse response=ServletActionContext.getResponse(); 
+			PrintWriter out=response.getWriter();    
+            out.print(1);    
+            out.flush();    
+            out.close(); 
+			
+		}
+		
+		return null;
+	}
+ 
 	public String updatepassword() throws Exception {
 		boolean ok = userService.updatepassword(user);
 		if (ok == true) {
@@ -124,6 +143,14 @@ public class UserAction extends ActionSupport {
 
 	public void setSearchuser(String searchuser) {
 		this.searchuser = searchuser;
+	}
+
+	public String getU_name() {
+		return u_name;
+	}
+
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
 	}
 
 }

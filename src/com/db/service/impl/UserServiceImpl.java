@@ -71,4 +71,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.searchuser(searchuser);
 	}
 
+	@Override
+	public User checkname(String u_name) {
+		UserDao userDao = SqlSessionTemplate.getMapper(UserDao.class);
+		return userDao.checkuname(u_name);
+	}
+
 }

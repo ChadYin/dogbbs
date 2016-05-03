@@ -28,4 +28,6 @@ public interface UserService {
 
 	List<User> searchuser(String searchuser);
 
+	User checkname(String u_name);
+
 }

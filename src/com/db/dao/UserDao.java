@@ -26,4 +26,6 @@ public interface UserDao {
 
 	List<User> searchuser(@Param("searchuser") String searchuser);
 
+	User checkuname(@Param("u_name") String u_name);
+
 }
