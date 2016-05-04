@@ -51,7 +51,6 @@
 	
 	
 	function uname(){
-		alert("s");
 		createXMLHttpRequest();
 		var name = document.getElementById("u_name").value;
 		if (XMLHttp != null) {
@@ -71,12 +70,13 @@
 
 				var sobj = document.getElementById("check");
 				var str = XMLHttp.responseText;
-				var a = document.getElementById("checkcc");
+				var a = document.getElementById("aaa");
 				if (str == 1) {
-
-					sobj.setAttribute("style", "display:block");
+					a.setAttribute("value", "0");
+					sobj.setAttribute("style", "display:block;");
 				} else {
-					sobj.setAttribute("style", "display:none");
+					a.setAttribute("value", "1");
+					sobj.setAttribute("style", "display:none;");
 				}
 			}
 		}
@@ -117,56 +117,23 @@
 		var u_realname = document.getElementById("u_realname").value;
 		var u_number = document.getElementById("u_number").value;
 		var u_tips = document.getElementById("u_tips").value;
-
+		var a = document.getElementById("aaa").value;
+		if(a==1){
+			isOk=true;
+		}else{
+			isOk=false;
+		}
 		if (isOk && u_name != "" && u_email != "" && u_password != "" && u_realname != "" && u_number != ""&& u_tips != "") {
 			return true;
 
 		} else {
-			alert("请填好所有信息");
+			alert("请正确填写信息");
 			return false;
 		}
 
 	}
 	</script>
-	<!-- 
-	<script type="text/javascript">
-	function uname() {
-		alert("1");
-		var uname = document.getElementById("u_name");
-		 if (uname.length != 0) {
-		var u_name = document.getElementById("u_name").value;
-		 var xmlHttpRequest = null;
-		 var url = "checkuname.action?u_name+"u_name;
-         var usermsg = document.getElementById("usermsg");
-         if (window.XMLHttpRequest) {//表示当前浏览器不是IE
-             xmlHttpRequest = new XMLHttpRequest();
-         } else if (window.ActiveXObject) {
-             xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-         }
-         xmlHttpRequest.open("GET", url, true);//设置请求方式为GET，设置请求的URL，设置为异步提交
-         xmlHttpRequest.onreadystatechange = function(){//将方法地址复制给onreadystatechange属性
-             if(xmlHttpRequest.readyState == 4){//Ajax引擎状态为成功
-                 if(xmlHttpRequest.status == 200){//HTTP协议状态为成功
-                     if(trim(xmlHttpRequest.responseText) != ""){
-                    	 usermsg.innerHTML = "恭喜您，用户名可以使用。 ";
-                     }else{
-                    	 usermsg.innerHTML = "<font color='red'>用户名已存在</font>";
-                         userfield.focus();
-                        
-                     }
-                 }else{
-                     alert("请求失败，错误码=" + xmlHttp.status);
-                 }
-             }
-         }
-         xmlHttpRequest.send(null);//将设置信息发送到Ajax引擎
-     }else{
-         usermsg.innerHTML = "";
-     }		
-	}
-	
-	</script>
- -->	
+
 </head>
 <body>
 	<div class="container">
@@ -183,8 +150,8 @@
 						<h1>Regist</h1>
 						<p>
 							<label for="username" class="uname" data-icon="u"> 用户名 </label> <input
-								type="text" id="u_name" name="user.u_name" required="required" onchange="uname()"><span
-					id="check" style="display: none;">用户名已存在</span>
+								type="text" id="u_name" name="user.u_name" required="required" onchange="uname()">
+								<span id="check" style="display: none;">用户名已存在</span>
 						</p>
 						<p>
 							<label for="email" class="youpasswd" data-icon="e"> 邮箱 </label> <input
@@ -209,6 +176,7 @@
 
 
 						<p class="login button">
+						<input type="hidden" id="aaa" value="1">
 							<input type="submit" value="注册" />
 						</p>
 
